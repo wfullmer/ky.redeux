@@ -7,7 +7,8 @@
 
 #create directories and mfix.dat files from doe.dat file 
 c=1
-while [ $c -le 20 ]; do 
+cstp=20
+while [ $c -le $cstp ]; do 
 #copy tmp dir
   cp -r tmp c$c
 #make main.m

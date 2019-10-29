@@ -1,0 +1,7 @@
+## list here files and folders for git to ignore
+c*/
+*.x
+tests/*.dat
+scripts/*.dat
+scripts/*.eps
+scripts/*.png
