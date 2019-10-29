@@ -1,0 +1,683 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Trim Size : 11in x 8.5in
+%% Text Area : 9.6in (include Runningheads) x 7in
+%% ws-ijbc.tex, 24 Jan 2010
+%% Tex file to use with ws-ijbc.cls written in Latex2E.
+%% The content, structure, format and layout of this style file is the
+%% property of World Scientific Publishing Co. Pte. Ltd.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+
+%\documentclass[draft]{ws-ijbc}
+\documentclass{ws-ijbc}
+%%\usepackage{ws-rotating}     % used only when sideways tables/figures are used
+\usepackage{graphicx}
+\usepackage{epstopdf}
+%
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{upgreek}
+\usepackage{bm}
+\usepackage{url}
+\usepackage{color}
+%\usepackage{soul}
+
+%user commands
+\newcommand\beq{\begin{equation}}
+\newcommand\eeq{\end{equation}}
+%\newcommand\beqa{\begin{eqnarray}}
+%\newcommand\eeqa{\end{eqnarray}}
+\newcommand\beqa{\begin{equation}\begin{aligned}}
+\newcommand\eeqa{\end{aligned}\end{equation}}
+\newcommand\wdf{\color{red}}
+
+
+\begin{document}
+
+\catchline{}{}{}{}{} % Publisher's Area please ignore
+
+\markboth{Author's Name}{Paper Title}
+
+\title{A SECOND STUDY OF THE CHAOTIC PROPERTIES OF THE KREISS-YSTR{\"O}M EQUATIONS}
+
+\author{William D. Fullmer\footnote{Permanent address: National Energy Technology Laboratory, Leidos Research Support Team, Morgantown, WV 26507, USA}}
+\address{Leidos, Morgantown, WV 26507, USA\\ 
+w.d.fullmer@gmail.com}
+
+\author{Alejandro Clausse}
+\address{CNEA-CONICET and University of Central Buenos Aires, 7000 Tandil, Argentina\\ \email{clausse@exa.unicen.edu.ar}}
+
+
+\author{Mart{\'i}n L{\'o}pez de Bertodano}
+\address{School of Nuclear Engineering, Purdue University, West Lafayette, IN 47907, USA\\ 
+\email{bertodan@purdue.edu}}%
+
+\maketitle
+
+\begin{history}
+\received{(to be inserted by publisher)}
+\end{history}
+
+\begin{abstract}
+The abstract goes here. 
+\end{abstract}
+
+\keywords{Kreiss-Ystr{\"o}m; largest Lyapunov exponent; two-fluid model}
+
+%\begin{multicols}{2}
+\section{Introduction}
+\label{sec.intro}
+The one-dimensional two-fluid model (TFM) is a four equation system (six including energy) which may become ill-posed as an initial-boundary value problem depending on the flow conditions and the specific constitutive modeling. Due to its importance in assessing and certifying the safety of nuclear power plants under accident scenarios \cite{trace, relap}, the conditional ill-posedness of the TFM is nearly as relevant today \cite{ahn17, relap7} as when the original discovery caused significant debate within the multiphase flow community and beyond \cite{gidaspow74}. Interested readers are referred to Lyczkowski \cite{lyczkowski10} for an overview or \cite{lyczkowski} for a detailed historical perspective on the ``spark that ignited the international controversy concerning the imaginary characteristics.''
+
+
+Even when reduced to four equations by 1-D and isothermal assumptions, the TFM can be quite cumbersome due to the large number of constitutive equations required to model the expansive topology of gas-liquid flow regimes, e.g., see Sec.~1.3 of \cite{ishiihibiki}. Several simple models have been proposed to study the mathematical character of conditionally ill-posed systems of PDEs in greater detail, notably the works of Keyfitz \cite{keyfitz03,keyfitz04} and Kreiss and Ystr\"{o}m \cite{kreiss02}. Previously \citep{fullmer14}, the authors have investigated the nonlinear and chaotic behavior of the Nonlinear Example 1 of \citet{kreiss02}: 
+\beqa
+\frac{\partial u}{\partial t} + u \frac{\partial u}{\partial x} - c \frac{\partial v}{\partial x} &= \mu \frac{{\partial}^2 u}{\partial x^2} - b u  \\
+\frac{\partial v}{\partial t} + \left(1 + \frac{v}{2}\right) \frac{\partial u}{\partial x} + u \frac{\partial v}{\partial x} &= \mu \frac{\partial^2 v}{\partial x^2} - b v 
+\label{eq.ky}
+\eeqa
+In the original system \citep{kreiss02}, $c$, the key instability parameter was set to unity, the linear sink, $b$, was set to a value of $0$ in the $u$-equation and $2$ in the $v$-equation. The primary aim of this work is to extend the nonlinear analysis of the previous study over a range of $c$, which was previously only varied for simple phase-space plots to assess the route to chaos. 
+
+The remainder of this study is outlined as follows. Sections~\ref{sec.lsa} and \ref{sec.vn} review the linear stability of the continuous and discretized equations. In Sec.~\ref{sec.bif}, general results from the simulations are presented including global statistics and a bifurcation diagram. The largest Lyapunov exponent and correlation dimensions are calculated in Sec.~\ref{sec.lle} and \ref{sec.dim}. 
+
+
+
+
+did not  The set as presented above is slightly more generalized that 
+
+
+
+
+Why do we like this model? looks like FFM in form, gives nice wave-looking patterns, see Fig.~\ref{fig.xt}. 
+
+
+How we discovered it was chaotic. 
+Original work, summary of what we want to do in this work 
+
+
+%\begin{figure}
+%\begin{center}
+%{\includegraphics[width=\columnwidth]{Fig1u.eps}}
+%{\includegraphics[width=\columnwidth]{Fig1v.eps}}
+%\end{center}
+%\caption{(Color online) Plot of $u(x,t)$ and $v(x,t)$. }
+%\label{fig.xt}}
+%\end{figure}
+
+\section{Linear Stability}
+\label{sec.lsa}
+%\subsection{Subsection Title}
+
+Although the linear stability of the original equations have been reported previously \cite{kreiss02, fullmer14b}, it is worthwhile to review the analysis with particular emphasis on the maximum linear growth rate (for a given domain size) as a function of the control parameter. Due to the linear sinks in both equations, the steady solution of the homogeneous state is the trivial one, i.e., $u_0 = v_0 = 0$. 
+
+
+
+
+In general, the growth rate is complex, $\omega = \omega_R + i \omega_I$, and the linear stability of the system is determined by the sign of $\omega_I$. 
+
+\beq
+\omega_I = -b \pm \sqrt{c} k -\mu k^2 .
+\label{eq.omega}
+\eeq
+The critical (largest) growth rate occurs at $k^* = \sqrt{c} / 2 \mu$ and its value is given by
+\beq
+\omega^* = \omega_I (k^*) = \frac{{c}}{{4 \mu}} - b .
+\label{eq.omega}
+\eeq
+
+
+
+The cut-off wavelength
+
+
+
+LSA section goes here. Here's a test equation array. 
+
+
+
+
+
+
+The two cut-off wavenumbers are coincident at $c = 4 b \mu$ which is exactly when the critical growth rate crosses the origin, i.e., $\omega_I^* = 0$. 
+
+%\beqa
+%\partial_{t}f + \mathbf{v}\cdot \nabla f + \frac{\partial}{\partial \mathbf{v}} \cdot
+%\left[\left(\frac{\mathbf{F}_{\text{fluid}}}{m} \right) f \right] +
+%\mathbf{g} \cdot \frac{\partial f}{\partial \mathbf{v} } = J\left[f,f\right],\nonumber\\
+%\label{2.0a}
+%\eeqa
+
+
+Here's a test equation. 
+
+%\beq
+%m \dd \mathbf{v} =  {\mathbf F}_{\text{fluid}} \dd t=
+%- \beta \Delta \mathbf{U} \dd t - \gamma \mathbf{V} \dd t + m \sqrt {\xi}  \dd \mathbf{W},
+%\label{2.0b}
+%\eeq
+
+
+
+Maybe also include a VN analysis? 
+
+
+A theoritical lower limit exists when $\lambda_0$ becomes equals teh smallest representable wavelength, however heruistic evicence shows that a sufficient ammount of resolution below the cut-off wavelength is required in order to provide sufficient dissipation to contain the instability. 
+
+Compare $omega_I^*$ to that from VN and stop the analysis at 10\% error? 
+
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=0.5\linewidth]{kvomega.eps}
+\end{center}
+\caption{Labeled tree {\it T}.}
+\label{figxyz}
+\end{figure}
+
+
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=0.5\linewidth]{lle.eps}
+\end{center}
+\caption{Labeled tree {\it T}.}
+\label{figxyz}
+\end{figure}
+
+
+
+
+\section{Bifurcation Diagram}
+\label{sec.bi}
+
+The bifurcation diagram goes here, probably with a few example figures of some states. 
+
+
+\section{Largest Lyapunov Exponent}
+\label{sec.lle}
+
+LLe here. 
+
+
+\section{Correlation Dimension}
+\label{sec.dim}
+
+CDim here. 
+
+
+\section{Summary and concluding remarks}
+\label{sec.conc}
+
+Conclusions go here. 
+
+
+
+
+\noindent Contributions are to be in English. Authors are
+encouraged to have their contribution checked for grammar.
+American spelling should be used. Abbreviations are allowed but
+should be spelt out in full when first used. Integers ten and
+below are to be spelt out. Italicize foreign language phrases
+(e.g.~Latin, French).
+
+The text is to be typeset in 11~pt Times \hbox{Roman},
+single-spaced with baselineskip of 13~pt. Text area is 17.8~cm (7
+inches) across and 24.4~cm (9.6 inches) deep (including running
+title). Final pagination and insertion of running titles will be
+done by the publisher.
+
+\section{Major Headings}
+Major headings should be typeset in boldface, with the first
+letter of important words capitalized.
+
+\subsection{Subheadings}
+Subheadings should be typeset in bold italics, with the first
+letter of first word capitalized and the section number in
+boldface.
+
+\subsubsection{Sub-subheadings}
+Typeset in italics (section number to be in roman) and capitalize
+the first letter of the first word only.
+
+\subsection{Numbering and spacing}
+Sections, subsections and sub-subsections are numbered with Arabic
+numerals. Use double spacing after major and subheadings, and
+single spacing after sub-subheadings.
+
+\section{Lists of Items}
+Lists are broadly classified into four major categories that can
+randomly be used as desired by the author:
+\begin{alphlist}[(d)]
+\item Numbered list.
+\item Lettered list.
+\item Unnumbered list.
+\item Bulleted list.
+\end{alphlist}
+
+\subsection{Numbered and lettered list}
+
+\begin{arabiclist}[(5)]
+\item The \verb|\begin{arabiclist}[]| command is used for the arabic
+number list (arabic numbers appearing within parenthesis), e.g.,
+(1), (2), etc.
+
+\smallskip
+
+\item The \verb|\begin{romanlist}[]| command is used for the roman
+number list (roman numbers appearing within parenthesis), e.g., (i),
+(ii), etc.
+
+\smallskip
+
+\item The \verb|\begin{Romanlist}[]| command is used for the cap roman
+\hbox{number list} (cap roman numbers appearing within parenthesis),
+e.g., (I), (II), etc.
+
+\smallskip
+
+\item The \verb|\begin{alphlist}[]| command is used for the alphabetic
+list (alphabets appearing within parenthesis), e.g., (a), (b), etc.
+
+\smallskip
+
+\item The \verb|\begin{Alphlist}[]| command is used for the cap
+alphabetic list (cap alphabets appearing within parenthesis),
+e.g., (A), (B), etc.
+\end{arabiclist}
+Note: For all the above mentioned lists (with the exception of
+alphabetic list), it is obligatory to enter the last entry's number
+in the list within the square bracket, to enable unit alignment.
+
+\subsection{Bulleted and unnumbered list}
+
+\begin{enumerate}
+\item[] The \verb|\begin{itemlist}| command is used for the bulleted list.
+
+\smallskip
+
+\item[] The \verb|\begin{unnumlist}| command is used for creating the
+  unnumbered list with the turnovers hangindent by 1\,pica.
+\end{enumerate}
+
+Lists may be laid out with each item marked by a dot:
+\begin{itemlist}
+\item item one
+\item item two
+\item item three.
+\end{itemlist}
+
+Items may also be numbered with lowercase Roman numerals:
+\begin{romanlist}[(iii)]
+\item item one
+\item item two
+    \begin{alphlist}[(b)]
+    \item lists within lists can be numbered with lowercase Roman letters
+    \item second item.
+    \end{alphlist}
+\item item three
+\item item four.
+\end{romanlist}
+
+\section{Theorems and Definitions}
+\noindent{\bf Input:}
+
+\begin{verbatim}
+\begin{theorem}
+We have $\# H^2 (M \supset N) < \infty$ for an inclusion ...
+\end{theorem}
+\end{verbatim}
+
+\noindent{\bf Output:}
+
+\begin{theorem}
+We have $\# H^2 (M \supset N) < \infty$ for an inclusion $M \supset
+N$ of factors of finite index.
+\end{theorem}
+
+\noindent{\bf Input:}
+
+\begin{verbatim}
+\begin{theorem}[Longo, 1998]
+For a given $Q$-system...
+\[
+N = \{x \in N; T x = \gamma (x) T, T x^* = \gamma (x^*) T\},
+\]
+and $E_\Xi (\cdot) = T^* \gamma (\cdot) T$ gives ...
+\end{theorem}
+\end{verbatim}
+
+\noindent{\bf Output:}
+
+\begin{theorem}[Longo, 1998]
+For a given $Q$-system...
+\[
+N = \{x \in N; T x = \gamma (x) T, T x^* = \gamma (x^*) T\},
+\]
+and $E_\Xi (\cdot) = T^* \gamma (\cdot) T$ gives a conditional
+expectation onto $N$.
+\end{theorem}
+
+\subsection{Proofs}
+The WSPC document styles also provide a predefined proof environment
+for proofs. The proof \hbox{environment} produces the heading
+`Proof' with appropriate spacing and punctuation. It also appends a
+`Q.E.D.' symbol, $\blacksquare$, at the end of a proof, e.g.
+
+\begin{verbatim}
+\begin{proof}
+This is just an example.
+\end{proof}
+\end{verbatim}
+
+\noindent to produce
+
+\begin{proof}
+This is just an example.
+\end{proof}
+
+The proof environment takes an argument in curly
+braces, which allows you to substitute a different name for the standard
+`Proof'. If you want to display, `Proof of Lemma', then write e.g.
+
+\begin{verbatim}
+\begin{proof}[Proof of Lemma]
+This is just an example.
+\end{proof}
+\end{verbatim}
+
+\noindent produces
+
+\begin{proof}[Proof of Lemma]
+This is just an example.
+\end{proof}
+
+\section{Equations}
+\noindent Displayed equations should be numbered consecutively in
+each section, with the number set flush right and enclosed in
+parentheses:
+\begin{equation}
+\mu(n, t) = \frac{\displaystyle\sum^\infty_{i=1} 1(d_i < t, N(d_i) = n)}
+{\displaystyle\int^t_{\sigma=0} 1(N(\sigma) = n)d\sigma}\,\,
+.\label{this}
+\end{equation}
+
+\noindent Equations should be referred to in abbreviated form,
+e.g.~``Eq.~(\ref{this})'' or ``(2)''. In multiple-line equations,
+the number should be given on the last line.
+
+Displayed equations are to be centered on the page width. Standard
+English letters like x are to appear as $x$ (italicized) in the
+text if they are used as mathematical symbols. Punctuation marks
+are used at the end of equations as if they appeared directly in
+the text.\footnote{Sample footnote}
+
+\section{Illustrations and Photographs}
+Figures are to be inserted in the text nearest their
+first reference. Please send one set of originals with copies. If the
+publisher is required to reduce the figures, ensure that the
+figures (including lettering and numbers) are large enough to be
+clearly seen after reduction.
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics{lle.eps}
+\end{center}
+\caption{Labeled tree {\it T}.}
+\label{fig2}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=5in]{lle.eps}
+\end{center}
+\caption{The bifurcating response curves of system
+$\alpha=0.5, \beta=1.8; \delta=0.2, \gamma=0$: (a)
+$\mu=-1.3$; and (b) $\mu=0.3$.}
+\label{fig1}
+\end{figure}
+
+Figures are to be sequentially numbered with Arabic
+numerals. The caption must be placed below the figure. For those
+figures with multiple parts which appear on different pages, it is
+best to place the full caption below the first part, and have
+e.g.~``Fig.~1 ({\it continued})'' below the last part. Typeset in
+9 pt Times Roman with baselineskip of 11 pt. Use double spacing
+between a caption and the text that follows immediately.
+
+Previously published material must be accompanied by written
+permission from the author and publisher.
+
+Very large figures and tables should be placed on a separate page
+by themselves. Landscape tables and figures can be typeset with the following environments:
+\begin{itemlist}
+\item \verb|sidewaystable| and
+\item \verb|sidewaysfigure|.
+\end{itemlist}
+
+\section{Tables}
+
+\noindent Tables should be inserted in the text as close to the
+point of reference as possible. Some space should be left above
+and below the table. Tables should be numbered sequentially in the
+text with Arabic numerals. Captions are to be centered above the
+tables. Typeset tables and captions in 9 pt Times Roman with
+baselineskip of 11 pt.
+
+If tables need to extend over to a second page, the continuation
+of the table should be preceded by a caption, e.g.~``Table~1 ({\it
+continued})''.
+
+\begin{table}[h]
+\tbl{Number of tests for WFF triple NA = 5, or NA = 8.}
+{\begin{tabular}{l c c c c c}\\[-2pt]
+\toprule
+{} &{} &3 &4 &8 &10\\[6pt]
+\hline\\[-2pt]
+{} &\phantom03 &1200 &2000 &\phantom02500 &\phantom03000\\[1pt]
+{\ninebf NC} &\phantom05 &2000 &2200 &\phantom02700 &\phantom03400\\[2pt]
+{} &\phantom08 &2500 &2700 &16000 &22000\\[2pt]
+{} &10 &3000 &3400 &22000 &28000\\[1pt]
+\botrule
+\end{tabular}}
+\end{table}
+
+By using \verb|\tbl| command in table environment, long captions will be justified to the table width while the short or single line captions are centered.
+\verb|\tbl{table caption}{tabullar environment}|.
+
+For most tables, the horizontal rules are obtained by:
+
+\begin{tabular}{ll}
+{\bf toprule} & one rule at the top\\
+{\bf colrule}& one rule separating column heads from data cells\\
+{\bf botrule}& one bottom rule\\
+{\bf Hline} & one thick rule at the top and bottom of the tables with multiple column heads\\
+\end{tabular}
+
+\
+
+To avoid the rules sticking out at either end
+of the table, add \verb|@{}| before the first and after the last descriptors, e.g.
+{@{}llll@{}}. Please avoid vertical rules in tables.
+But if you think the vertical rule is a must,
+you can use the standard \LaTeX{} \verb|tabular| environment.
+
+Headings which span for more than one column should be set using
+\verb|\multicolumn{#1}{#2}{#3}| where \verb|#1| is the number of
+columns to be spanned, \verb|#2| is the argument for the alignment
+of the column head which may be either {c} --- for center
+alignment; {l} --- for left alignment; or {r} --- for right
+alignment, as desired by the users. Use {c} for column heads as
+this is the WS style and \verb|#3| is the heading.
+
+\section{Cross-references}
+Use \verb|\label| and \verb|\ref| for cross-references to
+equations, figures, tables, sections, subsections, etc., instead
+of plain numbers. Every numbered part to which one wants to refer,
+should be labeled with the instruction \verb|\label|.
+For example:
+\begin{verbatim}
+\begin{equation}
+\mu(n, t)=\frac{\sum\limits^\infty_{i=1}1 (d_i < t, N(d_i)=n)}
+{\int\limits^t_{\sigma=0}1 (N(\sigma)=n)d\sigma}.\label{aba:eq1}
+\end{equation}
+\end{verbatim}
+With the instruction \verb|\ref| one can refer to a numbered part
+that has been labeled:
+\begin{verbatim}
+..., see also Eq. (\ref{aba:eq1})
+\end{verbatim}
+
+The \verb|\label| instruction should be typed
+\begin{itemlist}
+\item immediately after (or one line below), but not inside the argument of
+a number-generating instruction such as \verb|\section| or \verb|\caption|, e.g.:
+\verb|\caption{ ... caption ... }\label{aba:fig1}|.
+\item roughly in the position where the number appears, in environments
+such as an equation,
+\item labels should be unique, e.g., equation 1 can be labeled as
+\verb|\label{aba:eq1}|, where `{\tt aba}' is author's initial and
+`{\tt eq1}' the equation number.
+\end{itemlist}
+
+\section{References}
+References cited in the text should be placed within square
+brackets and stated as [surname of author(s), year of
+publication], e.g., \cite{Golub89} and, with three
+or more authors, \cite{Hall97}. If the reference reads as part of
+the sentence, the square brackets enclose only the year of
+publication, e.g., ``According to Golub and Van Loan [1989], \ldots''
+
+
+
+
+
+
+
+\nonumsection{Note Added} \noindent A note can be added before
+Acknowledgments.
+
+
+\nonumsection{Acknowledgments} \noindent This part should come
+before References. Funding information may also be included here.
+
+\nonumsection{Appendices} \noindent Appendices should be used only
+when absolutely necessary. They should come immediately before
+References.
+
+\appendix{}
+If there is more than one appendix, number them alphabetically.
+\begin{equation}
+\mu(n, t) = \frac{\displaystyle\sum^\infty_{i=1} 1(d_i < t, N(d_i) = n)}
+{\displaystyle\int^t_{\sigma=0} 1(N(\sigma) = n)d\sigma}\,\,
+.\label{that}
+\end{equation}
+Number displayed equations occurring in the appendix as (A.1),
+(A.2), etc.
+
+\nonumsection{References}
+\begin{thebibliography}{9}
+
+\bibitem[Anh {\it et al.}(2017)]{ahn17} Ahn, S. H. \& Aksan, N \& Austregesilo, H \& Bestion, D \& Chung, B. D. \& Coscarelli, E. \& D'Auria, F \& Emonot, P \& Gandrille, J. L. \& Sauvage, J. Y. \& Hannineng, M. \& Horvatovi{\'c}, I. \&  Kim, K.D. \& Kovtonyuk, A. \& Lutsanych, S. \& Petruzzi, A. [2017] ``Hyperbolicity and numerics in SYS-TH codes: The FONESYS point of view,'' {\it Nucl. Eng. Des.} {\bf 322}, pp. 227--239.
+
+\bibitem[Fullmer {\it et al.}(2014)]{fullmer14} Fullmer, W. D. \& Lopez~de~Bertodano, M. A. \& Chen, M. \& Clausse, A. [2014] ``Analysis of stability, verification and chaos with the Kreiss–Yström equations.'' {\it App. Math. Comp.} {\bf 248}, pp. 28--46.
+
+\bibitem[Gidaspow(1974)]{gidaspow74} Gidaspow, D. {(Chairman)} [1974] ``Modeling of two-phase flows,'' Proceedings of Round Table Discussions {RT-1-2}, {\it 5-th Int. Heat Trans. Conf.}, Tokyo, Japan, Sept. 3-7.
+
+\bibitem[Ishii \& Hibiki(2010)]{ishiihibiki} Ishii, M. \& Hibiki, T. [2010] {\it Thermo-fluid dynamics of two-phase flow}, (Springer Science \& Business Media, New York).
+
+\bibitem[Keyfitz {\it et al.}(2003)]{keyfitz03} Keyfitz, B. L. \& Sanders, R. \& Sever, M. [2003] ``Lack of hyperbolicity in the two-fluid model for two-phase incompressible flow,'' {\it Discrete \& Cont. Dyn. Sys. Series B} {\bf 3} (4), pp.~541--564.
+
+\bibitem[Keyfitz {\it et al.}(2002)]{keyfitz04} Keyfitz, B. L. \& Sever, M. \& Zhang, F. [2004] ``Viscous singular shock structure for a nonhyperbolic two-fluid model,'' {\it Nonlin.} {\bf 17} (5), pp.~1731.
+
+\bibitem[Kreiss \& Ystr\"{o}m(2002)]{kreiss02} Kreiss, H.-O. and Ystr\"{o}m, J. [2002] ``Parabolic problems which are ill-posed in the zero dissipation limit,'' {\it Math. \& Comput. Model.} {\bf 35}, pp.~1271--1295.
+
+\bibitem[Lyczkowski(2010)]{lyczkowski10} Lyczkowski, R. W. [2010] ``The history of multiphase computational fluid dynamics,'' {\it Ind. \& Eng. Chem. Res.} {\bf 49} (11), pp.~5029--5036.
+
+\bibitem[Lyczkowski(2017)]{lyczkowski} Lyczkowski, R. W. [2017] {\it The History of Multiphase Science and Computational Fluid Dynamics: A Personal Memoir}, (Springer, USA).
+
+\bibitem[ISL(2003)]{relap} Information Systems Laboratories (ISL). [2003] ``{RELAP5/MOD3.3} Code Manual Volume 1: Code structure, system models, and solution methods,'' Idaho Falls, ID. 
+
+\bibitem[Berry {\it et al.}(2015)]{relap7} Berry, R. A. \& Peterson, J. W. \& Zhang, H. \& Martineau, R. C. \& Zhao, H. \& Zou, L. \& Andrs. D. [2015] ``{RELAP7} Theory Manual,'' INL/EXT-14-31366 (rev. 1),  \url{https://relap7.inl.gov/Shared%20Documents/RELAP-7%20Theory%20Manual.pdf}.
+
+\bibitem[TRACE V5.0(2007)]{trace} US Nuclear Regulatory Commission. [2008] ``{TRACE V5.0} Theory Manual: Field equations, solution methods and physical models'' \url{https://www.nrc.gov/docs/ML1200/ML120060218.pdf}.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibitem[Golub \& Van Loan(1989)]{Golub89} Golub, G. H. \& Van Loan, C. F. [1989] {\it Matrix
+Comptations}, 2nd Ed. (Johns Hopkins University Press, USA).
+
+\bibitem[Haller {\it et al.}(1997)]{Hall97} Haller, B., Streiff, M., Fleisch, U. \& Zimmermann,
+R. [1997] ``Hardware implementation of a systolic \hbox{antenna}
+array signal processor based on CORDIC arithmetic,'' {\it Proc.
+Int. Conf. Acoust. Speech \hbox{Signal} Proc.} {\bf 5},
+pp. 4141--4144.
+
+\bibitem[Lie \& Wang(2000)]{Lie00} Lie, D. Y. C. \& Wang, K. L. [2000]  ``Si/SiGe
+heterostructures for Si-based nanoelectronics,'' {\it Handbook of}
+\hbox{\it Advanced} {\it Electronic and Photonic Devices and
+Materials}, ed.~Nalwa, H. S. (\hbox{Academic}
+Press, San Diego), Chapter~1, pp.~1--69.
+
+\bibitem[Lie \& Wang(2001)]{Lie01} Lie, D. Y. C. \& Wang, K. L. [2001]
+``Si/SiGe processing,''
+{\it Semiconductors and Semimetals} {\bf 73}, eds.~Willardson, R.
+\& Weber, E. (Academic Press, San Diego), Chapter 4, pp.~151--197.
+
+\bibitem[Parssinen {\it et al.}(1999)]{Par99} P\"arssinen, A., Jussila, J., Ryyn\"anen, J.,
+Sumanen, L. \& Halonen, K.  A. I. [1999] ``A 2-GHz wide-band direct conversion receiver for WCDMA applications,'' {\it IEEE J. Solid-State
+Circuits} {\bf 34}, p.~1893.
+
+\bibitem[Zhu~\& Leung, 1999]{EKF_DrLeung3}
+Zhu, Z. \& Leung, H. [1999] ``Optimal synchronization of chaotic systems in
+noise,'' {\it IEEE Trans. Circ. Syst.-I\/$:$ Fund. Th. Appl.} {\bf 46},
+1320--1329.
+
+\end{thebibliography}
+
+
+%\end{multicols}
+\end{document}
+
+
+
+\noindent A complete list of references cited, arranged in
+alphabetical order according to the surname of the first author,
+should be provided. References by the same author will follow a
+chronological sequence, i.e., \cite{Lie00} precedes \cite{Lie01}.
+Article titles should be stated in full but standard abbreviations
+should be used for journal names. Typeset reference in 10 pt Times
+Roman, single spaced with baselineskip of 12 pt.
+
+\subsection*{Examples}
+
+\subsubsection*{Journal reference:}
+
+\hangindent=1.12em P\"arssinen, A., Jussila, J., Ryyn\"anen, J.,
+Sumanen, L. \& Halonen, K.  A. I. [1999] ``A 2-GHz wide-band direct conversion receiver for WCDMA applications,'' {\it IEEE J. Solid-State
+Circuits} {\bf 34}, p. 1893.
+
+\noindent\hangindent=1.12em Zhu, Z. \& Leung, H. [1999] ``Optimal synchronization of chaotic systems in
+noise,'' {\it IEEE Trans. Circ. Syst.-I\/$:$ Fund. Th. Appl.} {\bf 46},
+1320--1329.
+
+\subsubsection*{Book reference:}
+
+\hangindent=1.12em Golub, G. H. \& Van Loan, C. F. [1989] {\it
+Matrix Comptations}, 2nd Ed. (Johns Hopkins University Press,
+USA).
+
+\noindent\hangindent=1.12em Lie, D. Y. C. \& Wang, K. L. [2001]
+``Si/SiGe processing,''
+{\it Semiconductors and Semimetals} {\bf 73}, eds.~Willardson, R.
+\& Weber, E., (Academic Press,
+San Diego), Chapter 4, pp.~151--197.
+
+\subsubsection*{Proceedings reference:}
+\hangindent=1.12em Haller, B., Streiff, M., Fleisch, U. \&
+Zimmermann, R. [1997] ``Hardware implementation of a systolic
+\hbox{antenna} array signal processor based on CORDIC
+arithmetic,'' {\it Proc. Int. Conf. Acoust. Speech
+\hbox{Signal} Proc.} {\bf 5}, pp. 4141--4144.
