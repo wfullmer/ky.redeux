@@ -2,6 +2,14 @@
 c*/
 *.x
 tests/*.dat
+tests/scn*
+tests/screen*
 scripts/*.dat
 scripts/*.eps
-scripts/*.png
+scripts/*.png 
+doc/*eps-converted-to.pdf
+doc/main.aux
+doc/main.bbl
+doc/main.blg
+doc/main.log
+doc/main.pdf
