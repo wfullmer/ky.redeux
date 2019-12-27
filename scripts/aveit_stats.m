@@ -18,8 +18,8 @@ for ic = 1:201
   indat = zeros(Nt+1,6); %time,mean(u),std(u),mean(v),std(v)
   for ii = 1:Nt+1
     time          =  fscanf(fid,'%f',1);
-    indat(ii,1:2) = (fscanf(fid,'%f',2))';
-    indat(ii,4:5) = (fscanf(fid,'%f',2))';
+    indat(ii,1:2) = (fscanf(fid,'%f',2))';  %'
+    indat(ii,4:5) = (fscanf(fid,'%f',2))';  %'
   end
   fclose(fid);
 

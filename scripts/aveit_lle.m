@@ -7,7 +7,7 @@ Nc     = 201;
 Nb     = 10;
 Nt     = 10000;
 Ntb    = 1000; 
-cvLLE = zeros(Nc,3); %c, LLE, CI 
+LLEave = zeros(Nc,2); %c, LLE, CI 
 
 
 for ic = 1:201
@@ -17,7 +17,7 @@ for ic = 1:201
   fid   = fopen(fname,'r');
   indat = zeros(Nt+1,2);
   for ii = 1:Nt+1
-    indat(ii,:) = (fscanf(fid,'%f',2))';
+    indat(ii,:) = (fscanf(fid,'%f',2))';  %'
   end
   fclose(fid);
 
@@ -33,17 +33,17 @@ for ic = 1:201
 
   %store 
   Fs = 2.262157; 
-  cvLLE(ic,1) = double(ic + 15)/100.0d0; 
-  cvLLE(ic,2) = mean(LLEbin);
-  cvLLE(ic,3) = Fs*std(LLEbin)/sqrt(10.0);
+  cm(ic,1) = double(ic - 1)/100.0d0; 
+  LLEave(ic,1) = mean(LLEbin);
+  LLEave(ic,2) = Fs*std(LLEbin)/sqrt(10.0);
 
 end
 
 
 % print out
-fid = fopen('cvLLE.dat','w');
+fid = fopen('lle.dat','w');
 for ic = 1:Nc
-  fprintf(fid,'%5.3f\t%20.12e\t%20.12e\n',cvLLE(ic,1:3)); 
+  fprintf(fid,'%5.3f\t%20.12e\t%20.12e\n',cm(ic),LLEave(ic,1:2)); 
 end
 fclose(fid);
 
