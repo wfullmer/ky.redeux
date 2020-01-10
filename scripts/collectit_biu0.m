@@ -12,7 +12,7 @@ for ic = 1:201
   fname  = strcat(dir,'/BIu0.dat');
   dat    = importdata(fname);
   N      = size(dat,1);
-  cm     = double(ic - 1)/100.0d0; 
+  cm     = double(ic - 1)/100.0d0
   for ii = 1:N
     fprintf(fid,'%5.3f\t%20.12e\n',cm,dat(ii)); 
   end
